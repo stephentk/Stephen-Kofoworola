@@ -40,15 +40,15 @@ npm install
 3. Create a `.env` file in the project root:
 
 ```env
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_USER=root
-DB_PASS=yourpassword
-DB_NAME=new_db
-RABBITMQ_URL=amqp://guest:guest@localhost:5672
-PORT=3000
-REDIS_HOST=127.0.0.1
-REDIS_PORT=6379
+DB_HOST
+DB_PORT
+DB_USER
+DB_PASS
+DB_NAME
+RABBITMQ_URL
+PORT
+REDIS_HOST
+REDIS_PORT
 ```
 
 4. Run MySQL migrations:
