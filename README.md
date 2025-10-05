@@ -155,8 +155,6 @@ app.use(errorHandler);
 * All database IDs use UUIDs (`CHAR(36)`) for uniqueness and consistency.
 
 ## Notes & Best Practices
-
-* Ensure RabbitMQ and Redis services are running before starting the app.
 * Use role-based access for sensitive endpoints.
 * Monitor queue length and system health regularly.
-* Follow coding standards and structured folder architecture for maintainability.
+
