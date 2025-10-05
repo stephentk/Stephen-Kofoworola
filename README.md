@@ -73,12 +73,6 @@ Run all tests:
 npm test
 ```
 
-Run tests with watch mode:
-
-```bash
-npm run test:watch
-```
-
 
 
 ## API Endpoints
