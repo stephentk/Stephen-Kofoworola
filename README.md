@@ -79,11 +79,7 @@ Run tests with watch mode:
 npm run test:watch
 ```
 
-Run coverage report:
 
-```bash
-npm run test:coverage
-```
 
 ## API Endpoints
 
