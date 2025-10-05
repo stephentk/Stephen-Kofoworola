@@ -17,29 +17,29 @@ class EmployeeService {
       return { employee, leaves };
     }
     //caching
-  // async getEmployeeWithLeaves(id, leaveRepository) {
-  //   // 1. Check Redis cache
-  //   const cached = await redis.get(`employee:${id}:withLeaves`);
-  //   if (cached) {
-  //     return JSON.parse(cached);
-  //   }
+  async getEmployeeWithLeavesCaching(id, leaveRepository) {
+    // 1. Check Redis cache
+    const cached = await redis.get(`employee:${id}:withLeaves`);
+    if (cached) {
+      return JSON.parse(cached);
+    }
 
-  //   // 2. Fetch from DB if not cached
-  //   const employee = await this.employeeRepository.findById(id);
-  //   if (!employee) return null;
+    // 2. Fetch from DB if not cached
+    const employee = await this.employeeRepository.findById(id);
+    if (!employee) return null;
 
-  //   const leaves = await leaveRepository.findByEmployee(id);
-  //   const result = { employee, leaves };
+    const leaves = await leaveRepository.findByEmployee(id);
+    const result = { employee, leaves };
 
-  //   // 3. Save to Redis with TTL (e.g., 1 hour)
-  //   await redis.setex(
-  //     `employee:${id}:withLeaves`,
-  //     3600,
-  //     JSON.stringify(result),
-  //   );
+    // 3. Save to Redis with TTL (e.g., 1 hour)
+    await redis.setex(
+      `employee:${id}:withLeaves`,
+      3600,
+      JSON.stringify(result),
+    );
 
-  //   return result;
-  // }
+    return result;
+  }
   async listByDepartment(deptId, opts) {
     return this.employeeRepository.findByDepartment(deptId, opts);
   }

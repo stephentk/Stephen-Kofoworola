@@ -36,6 +36,20 @@ exports.getEmployee = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.getEmployeeCaching = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const result = await service.getEmployeeWithLeavesCaching(id, leaveRepo);
+    if (!result)
+      return res
+        .status(404)
+        .json({ success: false, data: null, error: "Employee not found" });
+    return res.json(result);
+  } catch (err) {
+    next(err);
+  }
+};
 exports.listByDepartment = async (req, res, next) => {
   try {
     const deptId = req.params.id;
